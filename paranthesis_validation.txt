@@ -1,0 +1,59 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        int size = s.length();
+        if(size == 1)
+        {
+            return false;
+        }
+        else
+        {
+        stack<char> check;
+        for(char&c: s){
+            switch(c){
+                case '(':
+                    check.push(c);
+                    break;
+                case '{':
+                    check.push(c);
+                    break;
+                case '[':
+                    check.push(c);
+                    break;
+                case ')':
+                    if(check.top()!='(' || check.empty())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        check.pop();
+                    }
+                    break;
+                case '}':
+                    if(check.top()!='{' || check.empty())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        check.pop();
+                    } 
+                    break;
+                case ']':
+                    if(check.top()!='[' || check.empty())
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        check.pop();
+                    }  
+                    break;
+        
+            }
+        }
+        return check.empty();
+        }
+    }
+};
